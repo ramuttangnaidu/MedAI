@@ -1,4 +1,4 @@
-# MedAI — AI Healthcare Assistant
+# MedAI — AI Healthcare AssistantX
 
 > A futuristic, production-grade AI healthcare assistant that turns symptoms into structured, easy-to-understand medical guidance.
 
