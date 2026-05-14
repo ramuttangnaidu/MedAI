@@ -192,10 +192,31 @@ function ChatPage() {
 
   return (
     <div className="relative h-screen w-full overflow-hidden bg-background text-foreground flex">
-      {/* Ambient bg */}
-      <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-40 -left-40 h-[28rem] w-[28rem] rounded-full bg-primary/15 blur-3xl" />
-        <div className="absolute bottom-0 right-0 h-[28rem] w-[28rem] rounded-full bg-accent/15 blur-3xl" />
+      {/* Animated 3D ambient background */}
+      <AnimatedBackground />
+      {/* Floating particles */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 z-[1]">
+        {Array.from({ length: 14 }).map((_, i) => (
+          <motion.span
+            key={i}
+            className="absolute h-1 w-1 rounded-full bg-primary/60 shadow-glow"
+            style={{
+              left: `${(i * 7.3) % 100}%`,
+              top: `${(i * 13.7) % 100}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              opacity: [0.2, 0.9, 0.2],
+              scale: [1, 1.6, 1],
+            }}
+            transition={{
+              duration: 6 + (i % 5),
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.3,
+            }}
+          />
+        ))}
       </div>
 
       {/* SIDEBAR */}
