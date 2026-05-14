@@ -77,6 +77,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "author", content: "MedAI" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "MedAI — Futuristic AI Healthcare Assistant" },
+      { name: "twitter:title", content: "MedAI — Futuristic AI Healthcare Assistant" },
+      { property: "og:description", content: "MedAI is an AI-powered healthcare assistant that analyzes symptoms and provides cautious, structured guidance." },
+      { name: "twitter:description", content: "MedAI is an AI-powered healthcare assistant that analyzes symptoms and provides cautious, structured guidance." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8537255e-a786-4552-9065-680dadfa09e3/id-preview-8092e962--52940d04-1317-42f8-95fd-6f52c909b0e4.lovable.app-1778782423989.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8537255e-a786-4552-9065-680dadfa09e3/id-preview-8092e962--52940d04-1317-42f8-95fd-6f52c909b0e4.lovable.app-1778782423989.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
