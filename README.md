@@ -1,12 +1,18 @@
 # MedAI — AI Healthcare Assistant
 
-> A futuristic, production-grade AI healthcare assistant that turns symptoms into structured, easy-to-understand medical guidance.
+A futuristic, production-grade AI healthcare assistant that turns symptoms into structured, easy-to-understand medical guidance.
+
+<div align="center">
 
 [![Live Demo](https://img.shields.io/badge/🚀%20Live%20Demo-doc--ai-green?style=for-the-badge)](https://doc-ai-web.lovable.app)
 
 
- 🔗 **🌐 URL:** [`https://doc-ai-web.lovable.app`](https://doc-ai-web.lovable.app)
----
+
+> _🔗 **🌐 URL:** [`https://doc-ai-web.lovable.app`](https://doc-ai-web.lovable.app)_
+
+</div>
+
+
 
 ## ✨ Overview
 
