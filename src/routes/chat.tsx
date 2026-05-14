@@ -14,6 +14,8 @@ import {
   Trash2,
 } from "lucide-react";
 import { Logo } from "@/components/medai/Logo";
+import { AnimatedBackground } from "@/components/medai/AnimatedBackground";
+import { HeroOrb } from "@/components/medai/HeroOrb";
 import {
   MedicalResponseCard,
   type MedicalResponse,
