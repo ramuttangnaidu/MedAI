@@ -14,6 +14,8 @@ import {
   Trash2,
 } from "lucide-react";
 import { Logo } from "@/components/medai/Logo";
+import { AnimatedBackground } from "@/components/medai/AnimatedBackground";
+import { HeroOrb } from "@/components/medai/HeroOrb";
 import {
   MedicalResponseCard,
   type MedicalResponse,
@@ -190,10 +192,31 @@ function ChatPage() {
 
   return (
     <div className="relative h-screen w-full overflow-hidden bg-background text-foreground flex">
-      {/* Ambient bg */}
-      <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-40 -left-40 h-[28rem] w-[28rem] rounded-full bg-primary/15 blur-3xl" />
-        <div className="absolute bottom-0 right-0 h-[28rem] w-[28rem] rounded-full bg-accent/15 blur-3xl" />
+      {/* Animated 3D ambient background */}
+      <AnimatedBackground />
+      {/* Floating particles */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 z-[1]">
+        {Array.from({ length: 14 }).map((_, i) => (
+          <motion.span
+            key={i}
+            className="absolute h-1 w-1 rounded-full bg-primary/60 shadow-glow"
+            style={{
+              left: `${(i * 7.3) % 100}%`,
+              top: `${(i * 13.7) % 100}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              opacity: [0.2, 0.9, 0.2],
+              scale: [1, 1.6, 1],
+            }}
+            transition={{
+              duration: 6 + (i % 5),
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.3,
+            }}
+          />
+        ))}
       </div>
 
       {/* SIDEBAR */}
@@ -384,27 +407,37 @@ function EmptyState({ onPick }: { onPick: (t: string) => void }) {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="text-center py-10"
+      className="text-center py-6"
     >
-      <div className="mx-auto mb-5 grid h-16 w-16 place-items-center rounded-2xl bg-gradient-primary shadow-glow animate-float">
-        <Sparkles className="h-7 w-7 text-primary-foreground" />
+      <div className="mx-auto mb-4 h-56 w-56 md:h-72 md:w-72">
+        <HeroOrb />
       </div>
-      <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
+      <motion.h2
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.6 }}
+        className="text-2xl md:text-3xl font-semibold tracking-tight bg-gradient-to-r from-foreground via-primary to-accent bg-clip-text text-transparent"
+      >
         How are you feeling today?
-      </h2>
+      </motion.h2>
       <p className="mt-2 text-sm text-muted-foreground max-w-md mx-auto">
         Describe your symptoms in your own words. MedAI will respond with a structured,
         cautious analysis.
       </p>
       <div className="mt-8 grid gap-2 sm:grid-cols-2 max-w-xl mx-auto">
-        {STARTERS.map((s) => (
-          <button
+        {STARTERS.map((s, i) => (
+          <motion.button
             key={s}
             onClick={() => onPick(s)}
-            className="text-left rounded-xl glass p-3 text-sm hover:bg-white/[0.07] hover:scale-[1.01] transition"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 + i * 0.08, duration: 0.4 }}
+            whileHover={{ y: -3, scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="text-left rounded-xl glass p-3 text-sm hover:bg-white/[0.07] transition shadow-elegant"
           >
             {s}
-          </button>
+          </motion.button>
         ))}
       </div>
     </motion.div>
